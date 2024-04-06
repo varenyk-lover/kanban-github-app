@@ -2,6 +2,13 @@ import {useDispatch, useSelector} from "react-redux";
 import Task from "./Task";
 import boardsSlice from "../redux/boardsSlice";
 
+export enum COLUMNS {
+    TODO = "ToDo",
+    IN_PROGRESS = "In Progress",
+    DONE = "Done",
+}
+
+export type ColumnType = `${COLUMNS}`;
 
 const Column = ({colIndex, prevColIndex, taskIndex}) => {
 

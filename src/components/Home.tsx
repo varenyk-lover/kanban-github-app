@@ -26,7 +26,7 @@ const Home = () => {
     const board = boards.find((board) => board.isActive === true);
     const columns = board.columns;
 
-    // const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+
 
     return (
         <div

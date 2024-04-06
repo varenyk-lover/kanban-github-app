@@ -1,9 +1,27 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useState} from "react";
+import useDarkMode from "../hooks/useDarkMode";
+import lightIcon from "../assets/icon-light-theme.svg";
+import {Switch} from "@headlessui/react";
+import darkIcon from "../assets/icon-dark-theme.svg";
+import RepoInfo from "./RepoInfo";
+
 
 const Header = () => {
 
     const boards = useSelector((state) => state.boards);
     const board = boards.find((board) => board.isActive);
+
+    const [colorTheme, setTheme] = useDarkMode();
+    const [darkSide, setDarkSide] = useState(
+        colorTheme === "light" ? true : false
+    );
+    const toggleDarkMode = (checked) => {
+        setTheme(colorTheme);
+        setDarkSide(checked);
+    };
+
+
 
 
     const handleLoading = (e) => {
@@ -29,31 +47,54 @@ const Header = () => {
     return (
         <header className=" px-20 py-5 fixed left-0 bg-white dark:bg-[#2b2c37] z-50 right-0 ">
             <form className="h-[100px]">
-                <div className=" flex justify-between dark:text-white items-center  ">
+                <div className=" flex justify-between   ">
 
                     {/* Left Side  */}
-                    <div className=" flex items-center  space-x-2  md:space-x-4">
-                        <input className=" p-3 fixed  bg-gray-200 min-w-[880px] rounded-full "
-                               placeholder="Enter repo URL"/>
+
+                    <div className=" flex gap-6">
+                        <div className=" flex items-center w-[1000px] space-x-2  md:space-x-4">
+                            <input className=" p-3 h-[56px] bg-gray-200  w-full rounded-full "
+                                   placeholder="Enter repo URL"/>
+                        </div>
+
+                        <div className=" flex space-x-4 items-center   ">
+                            <button type="submit"
+                                    className=" button h-[56px] md:block "
+                                    onClick={handleLoading}
+                            >
+                                Load issues
+                            </button>
+                        </div>
                     </div>
 
                     {/* Right Side */}
+                    <div
+                        className=" mx-2 rounded-full p-4 relative space-x-2 bg-slate-100 dark:bg-[#20212c] flex justify-center items-center ">
+                        <img src={lightIcon} alt="sun indicating light mode"/>
 
-                    <div className=" flex space-x-4 items-center   ">
-                        <button type="submit"
-                                className=" button  md:block "
-                                onClick={handleLoading}
+                        <Switch
+                            checked={darkSide}
+                            onChange={toggleDarkMode}
+                            className={`${
+                                darkSide ? "bg-[#635fc7]" : "bg-gray-200"
+                            } relative inline-flex h-6 w-11 items-center rounded-full`}
                         >
-                            Load issues
-                        </button>
+                    <span
+                        className={`${
+                            darkSide ? "translate-x-6" : "translate-x-1"
+                        } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+                    />
+                        </Switch>
+
+                        <img src={darkIcon} alt="moon indicating dark mode"/>
 
                     </div>
+
+
                 </div>
 
-                {/* for test check is any board */}
-                {board && <div className="pt-6 flex gap-2">
-                    <span>Repo owner??</span> <span>&gt;</span> <span>Repo name??</span> <span>&#11088; ? K stars</span>
-                </div>}
+                {/* for test - check is any board uploaded */}
+                {/*{board && <RepoInfo repoOwnerUrl={} repoNameUrl={} repoOwner={} repoName={} stars={}/>}*/}
 
             </form>
 
