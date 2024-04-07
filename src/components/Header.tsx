@@ -19,7 +19,6 @@ const Header = () => {
 
     const url = useTSelector((state) => state.repo.url);
     const cachedURL = sessionStorage.getItem("URL") || "";
-/*
 
     const {
         data: repoInfo,
@@ -29,12 +28,10 @@ const Header = () => {
     } = useGetRepoInfoQuery(url || cachedURL, {
         skip: !url && !cachedURL,
     });
-*/
 
     /*   if (isLoading || isFetching) {
            return <Loader />;
-       }
-   */
+       }*/
 
     //    for test
     const handleLoading = (e) => {
