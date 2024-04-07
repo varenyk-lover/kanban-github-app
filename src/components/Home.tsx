@@ -1,6 +1,6 @@
 import   {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
-import Column from "./Column";
+import Column from "./Board/Column";
 
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
 
 
     return (
-        <div
+        <main
             className="bg-[#f4f7fd] pt-[90px] h-screen scrollbar-hide  flex  justify-center  dark:bg-[#20212c]   overflow-y-hidden gap-6 "
 
         >
@@ -50,7 +50,7 @@ const Home = () => {
                 </>
             )}
 
-        </div>
+        </main>
     );
 }
 

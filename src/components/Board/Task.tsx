@@ -1,6 +1,6 @@
 import  { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import boardsSlice from "../redux/boardsSlice";
+import boardsSlice from "../../redux/boardsSlice";
 
 
 const Task = ({colIndex, taskIndex}) => {
