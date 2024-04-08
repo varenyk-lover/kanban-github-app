@@ -18,7 +18,7 @@ const ThemeSwitcher = () => {
 
     return (
         <div
-            className=" mx-2 rounded-full p-4 relative space-x-2 bg-slate-100 dark:bg-[#20212c] flex justify-center items-center ">
+            className=" mx-2 rounded-full p-4 relative space-x-2 bg-slate-100 dark:bg-[#20212c] flex justify-center items-start     min-w-[131px] h-[56px]  items-center">
             <img src={lightIcon} alt="sun indicating light mode"/>
 
             <Switch

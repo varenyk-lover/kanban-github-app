@@ -3,6 +3,7 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query';
 
 import {BASE_URL} from "../utils/constants";
 import {Repo} from "../types/Repo";
+import {BaseQueryResponse} from "../types/Query";
 
 const githubApi = createApi({
     reducerPath: "githubApi",
@@ -12,7 +13,7 @@ const githubApi = createApi({
 
 
     endpoints: (builder) => ({
-        getRepoInfo: builder.query<Repo, string>({
+        getRepoInfo: builder.query<Repo, BaseQueryResponse>({
 
             query: (url) => {
                 const pathname = new URL(url).pathname;

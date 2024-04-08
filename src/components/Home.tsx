@@ -4,22 +4,6 @@ import Column from "./Board/Column";
 
 
 const Home = () => {
-/*    const [windowSize, setWindowSize] = useState([
-        window.innerWidth,
-        window.innerHeight,
-    ]);
-
-    useEffect(() => {
-        const handleWindowResize = () => {
-            setWindowSize([window.innerWidth, window.innerHeight]);
-        };
-
-        window.addEventListener("resize", handleWindowResize);
-
-        return () => {
-            window.removeEventListener("resize", handleWindowResize);
-        };
-    });*/
 
 
     const boards = useSelector((state) => state.boards);
@@ -29,12 +13,7 @@ const Home = () => {
 
 
     return (
-        <main
-            className="bg-[#f4f7fd] pt-[90px] h-screen scrollbar-hide  flex  justify-center  dark:bg-[#20212c]   overflow-y-hidden gap-6 "
-
-        >
-
-
+        <div className="flex  justify-center gap-6 ">
             {/* Columns Section */}
 
             {columns.length > 0 ? (
@@ -50,7 +29,7 @@ const Home = () => {
                 </>
             )}
 
-        </main>
+        </div>
     );
 }
 
