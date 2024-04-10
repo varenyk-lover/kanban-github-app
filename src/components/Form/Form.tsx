@@ -1,14 +1,12 @@
 import * as React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {RootState} from "@reduxjs/toolkit/query";
+import {useState} from "react";
 import {repoActions} from "../../redux/repoSlice";
-import {useTDispatch, useTSelector} from "../../hooks/reduxHooks";
+import {useTDispatch} from "../../hooks/reduxHooks";
+
 
 
 const Form = () => {
-    const [showLoader, setShowLoader] = useState<boolean>(false);
-    const [error, setError] = useState<string>("");
+    const [errorMessage, setErrorMessage] = useState<string>("");
     const [inputValue, setInputValue] = useState<string>("");
     //Далі 2 групи, які не запам'ятовуються, і містять будь-які знаки окрім риски і пробіла, решта валідації робить гітхаб при створенні репо і акк
     const urlRegex = /^https:\/\/github\.com\/[^\/]+\/[^\/]+$/;
@@ -17,11 +15,11 @@ const Form = () => {
 
     const validateUrl = () => {
         if (inputValue && !urlRegex.test(inputValue)) {
-            setError("Enter valid URL of the GitHub repo");
+            setErrorMessage("Enter valid URL of the GitHub repo");
         } else if (inputValue.trim().length < 1) {
-            setError("URL is required");
+            setErrorMessage("URL is required");
         } else {
-            setError("");
+            setErrorMessage("");
         }
     };
 
@@ -32,14 +30,12 @@ const Form = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setShowLoader(true);
-        setError('');
+        setErrorMessage('');
         validateUrl();
 
         dispatch(repoActions.setRepoUrl(inputValue));
         setInputValue("");
         console.log(inputValue);
-        setShowLoader(false);
     };
 
 
@@ -47,18 +43,16 @@ const Form = () => {
         <form onSubmit={handleSubmit} className=" flex gap-6">
             <div className=" flex items-start flex-col min-h-[80px] w-[1000px] space-x-2  md:space-x-4">
                 <input
-                    className={`p-3 h-[56px] bg-gray-200 w-full rounded-full border-[0.5px] outline-1 ring-0 focus:outline-[#635fc7] ${error ? 'border-[#ff4d4f]' : ''}`}
+                    className={`p-3 h-[56px] bg-gray-200 w-full rounded-full border-[0.5px] outline-1 ring-0 focus:outline-[#635fc7] ${errorMessage ? 'border-[#ff4d4f]' : ''}`}
                     autoComplete="off"
                     placeholder="Enter repo URL" type="text" name="url"
                     value={inputValue} onChange={handleChange}/>
-                {error && <div className="text-[#ff4d4f] ">{error}</div>}
+                {errorMessage && <div className="text-[#ff4d4f] ">{errorMessage}</div>}
             </div>
 
             <div className=" flex space-x-4 items-start   ">
-                <button type="submit"
-                        className=" button h-[56px] min-w-[131px] md:block "
-                >
-                    <span>{showLoader ? ("...Loading") : ("Load issues")}</span>
+                <button type="submit" className=" button h-[56px] min-w-[131px] md:block">
+                    Load issues
                 </button>
             </div>
         </form>
