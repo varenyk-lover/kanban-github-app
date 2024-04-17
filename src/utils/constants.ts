@@ -10,4 +10,12 @@ export const HOURS_IN_DAY = 24;
 export const DAYS_IN_WEEK = 7;
 export const MONTHS_IN_YEAR = 12;
 
-export const BASE_URL = "https://api.github.com/repos/";
+export const BASE_URL: string = "https://api.github.com/repos/";
+
+export enum COLUMNS {
+    TODO = "ToDo",
+    IN_PROGRESS = "In Progress",
+    DONE = "Done",
+}
+
+export type ColumnType = `${COLUMNS}`;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useState} from "react";
-import {repoActions} from "../../redux/repoSlice";
+import {kanboardActions} from "../../redux/kanboardSlice";
 import {useTDispatch} from "../../hooks/reduxHooks";
 
 
@@ -33,7 +33,7 @@ const Form = () => {
         setErrorMessage('');
         validateUrl();
 
-        dispatch(repoActions.setRepoUrl(inputValue));
+        dispatch(kanboardActions.setRepoUrl(inputValue));
         setInputValue("");
         console.log(inputValue);
     };

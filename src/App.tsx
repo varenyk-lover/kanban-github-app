@@ -15,22 +15,31 @@ const App = () => {
     if (!activeBoard && boards.length > 0)
         dispatch(boardsSlice.actions.setBoardActive({index: 0}));
 
-    const url = useTSelector((state) => state.repo.url);
+    const url = useTSelector((state) => state.kanboard.url);
     const cachedURL = sessionStorage.getItem("URL") || "";
 
 
     //skip: якщо url та cachedURL пусті, ми пропускаємо запит, оскільки немає потреби виконувати запит, якщо URL не встановлено або невизначено.
-    const data = useGetRepoInfoQuery(url || cachedURL, {
+    const {
+        data: repoInfo,
+        isLoading,
+        isFetching,
+        isError,
+    } = useGetRepoInfoQuery(url || cachedURL, {
         skip: !url && !cachedURL,
     });
 
     console.log(cachedURL);
 
 
+
     return (
         <>
-            <Header data={data}/>
-            <Home url={url || cachedURL} data={data}/>
+            <Header repoInfo={repoInfo} isError={isError}/>
+            <Home repoInfo={repoInfo}
+                  isLoading={isLoading}
+                  isFetching={isFetching}
+                  isError={isError} url={url || cachedURL}/>
         </>
     );
 }

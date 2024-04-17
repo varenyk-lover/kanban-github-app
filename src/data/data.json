@@ -5,7 +5,7 @@
       "isActive": false,
       "columns": [
         {
-          "name": "Todo",
+          "name": "To do",
           "tasks": [
             {
               "title": "Build UI for onboarding flow",

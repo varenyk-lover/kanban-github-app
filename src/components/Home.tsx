@@ -4,24 +4,30 @@ import loader from "../assets/loading-spinner.svg";
 import nodata from "../assets/box.svg";
 import notfound from "../assets/github-opened.svg";
 import * as React from "react";
-import {BaseQueryResponse} from "../types/Query";
+import { Query} from "../types/Query";
 import StateHandler from "./StateHandler/StateHandler";
+import Board from "./Board/Board";
+import {Repo} from "../types/Repo";
 
-interface HomeProps extends BaseQueryResponse {
-    url: string
+interface HomeProps {
+    repoInfo: Repo;
+    isLoading: boolean;
+    isFetching: boolean;
+    isError: boolean;
+    url: Query['url'];
 }
 
-const Home: React.FC<HomeProps> = ({data, url}) => {
+const Home: React.FC<HomeProps> = ({
+                                       repoInfo,
+                                       isLoading,
+                                       isFetching,
+                                       isError, url
+                                   }) => {
     const boards = useSelector((state) => state.boards);
     const board = boards.find((board) => board.isActive === true);
     const columns = board.columns;
 
-    const {
-        data: repoInfo,
-        isLoading,
-        isFetching,
-        isError,
-    } = data;
+    console.log(repoInfo);
 
     return (
         <main
@@ -32,12 +38,8 @@ const Home: React.FC<HomeProps> = ({data, url}) => {
                     <StateHandler imgSrc={notfound}
                                   message={`Github account or repository not found. Please refresh the page or try another URL.`}/>
                 ) :
-                (repoInfo !== undefined && columns.length > 0) ? (
-                    <div className="flex  justify-center gap-6 ">
-                        {columns.map((col, index) => (
-                            <Column key={index} colIndex={index}/>
-                        ))}
-                    </div>
+                (!isError && repoInfo && columns.length > 0) ? (
+                    <Board url={url}/>
                 ) : (<StateHandler imgSrc={nodata} message={"No data"}/>)
             }
         </main>

@@ -1,21 +1,19 @@
 import {useDispatch, useSelector} from "react-redux";
 import Task from "./Task";
 import boardsSlice from "../../redux/boardsSlice";
+import * as React from "react";
 
-export enum COLUMNS {
-    TODO = "ToDo",
-    IN_PROGRESS = "In Progress",
-    DONE = "Done",
+interface ColumnProps {
+    colIndex: number;
+    prevColIndex: number;
+    taskIndex: number;
 }
 
-  type ColumnType = `${COLUMNS}`;
-
-const Column = ({colIndex, prevColIndex, taskIndex}) => {
-
+const Column: React.FC<ColumnProps> = ({colKey, title, taskIndex}) => {
     const dispatch = useDispatch();
     const boards = useSelector(state => state.boards);
     const board = boards.find(board => board.isActive);
-    const col = board.columns.find((col, i) => i === colIndex);
+   /* const col = board.columns.find((col, i) => i === colIndex);
 
 
     //FOR DRAGGING AND BETWEEN DIFFERENT COLUMNS
@@ -35,7 +33,7 @@ const Column = ({colIndex, prevColIndex, taskIndex}) => {
         }
 
 
-    };
+    };*/
 
     const handleOnDragOver = (e) => {
         e.preventDefault();
@@ -44,20 +42,21 @@ const Column = ({colIndex, prevColIndex, taskIndex}) => {
 
     return (
         <div
-             onDrop={handleOnDrop}
-             onDragOver={handleOnDragOver}
-             className=" mx-5 pt-[90px]  "
+            // onDrop={handleOnDrop}
+            onDragOver={handleOnDragOver}
+            className=" mx-5 pt-[90px]  "
         >
-            <div className="  p-5 border-[1px]   overflow-y-auto scrollbar-hide border-indigo-500 rounded-xl min-w-[320px] h-[620px] ">
-            <p className=" font-semibold flex justify-center  items-center  gap-2 tracking-widest md:tracking-[.2em] text-gray-500  ">
+            <div
+                className="  p-5 border-[1px]   overflow-y-auto scrollbar-hide border-indigo-500 rounded-xl min-w-[320px] h-[620px] ">
+                <p className=" font-semibold flex justify-center  items-center  gap-2 tracking-widest md:tracking-[.2em] text-gray-500  ">
 
-                {col.name}
-            </p>
+                    {title}
+                </p>
 
-            {col.tasks.map((task, index) => (
-                <Task key={index} taskIndex={index} colIndex={colIndex}/>
-            ))}
-        </div>
+             {/*   {col.tasks.map((task, index) => (
+                    <Task key={index} taskIndex={index} colIndex={colIndex}/>
+                ))}*/}
+            </div>
 
         </div>
     );

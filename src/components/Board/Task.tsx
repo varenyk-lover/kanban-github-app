@@ -1,9 +1,14 @@
-import  { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import boardsSlice from "../../redux/boardsSlice";
+import * as React from "react";
 
+interface TaskProps {
+    colIndex: number;
+    taskIndex: number;
+}
 
-const Task = ({colIndex, taskIndex}) => {
+const Task: React.FC<TaskProps> = ({colIndex, taskIndex}) => {
 
     const dispatch = useDispatch();
     const boards = useSelector((state) => state.boards);
@@ -21,7 +26,7 @@ const Task = ({colIndex, taskIndex}) => {
         setDraggedTaskIndex(taskIndex);
         e.dataTransfer.setData(
             "text",
-            JSON.stringify({ taskIndex, prevColIndex: colIndex })
+            JSON.stringify({taskIndex, prevColIndex: colIndex})
         );
     };
 
@@ -63,7 +68,7 @@ const Task = ({colIndex, taskIndex}) => {
             >
                 <p className=" font-bold tracking-wide text">{task.title}</p>
                 <p className=" font-bold text-xs tracking-tighter mt-2 text-gray-500">
-                  some editional info???
+                    some editional info???
                 </p>
             </div>
 

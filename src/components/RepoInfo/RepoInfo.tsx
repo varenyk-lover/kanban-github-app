@@ -1,11 +1,13 @@
 import countStars from "../../utils/countStars";
+import {Owner, Repo} from "../../types/Repo";
+import * as React from "react";
 
 interface FormInputProps {
-    repoOwnerUrl: string;
-    repoNameUrl: string;
-    repoOwner: string;
-    repoName: string;
-    stars: number;
+    repoOwnerUrl: Owner['html_url'];
+    repoNameUrl: Repo['html_url'];
+    repoOwner: Owner['login'];
+    repoName: Repo['name'];
+    stars: Repo['stargazers_count'];
 }
 
 
