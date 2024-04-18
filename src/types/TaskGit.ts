@@ -1,14 +1,14 @@
 import {COLUMNS, ColumnType} from "../utils/constants";
-import {Issue} from "./Issue";
+import {Issue} from "./Issue"
 
-export interface Task extends Issue {
+export interface TaskGit extends Issue {
     column: ColumnType;
 }
 
 interface TaskMap {
-    [COLUMNS.TODO]: Task[];
-    [COLUMNS.IN_PROGRESS]: Task[];
-    [COLUMNS.DONE]: Task[];
+    [COLUMNS.TODO]: TaskGit[];
+    [COLUMNS.IN_PROGRESS]: TaskGit[];
+    [COLUMNS.DONE]: TaskGit[];
 }
 
 export type SetItemsPropType = TaskMap | ((items: TaskMap) => TaskMap);

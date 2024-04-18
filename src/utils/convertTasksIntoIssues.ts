@@ -1,9 +1,9 @@
 import {Issue} from "../types/Issue";
 import {ColumnType} from "./constants";
-import {Task} from "../types/Task";
+import {TaskGit} from "../types/TaskGit";
 
 
-export const convertTasksIntoIssues = (issues: Issue[], column: ColumnType): Task[] => {
+export const convertTasksIntoIssues = (issues: Issue[], column: ColumnType): TaskGit[] => {
     return  issues.map((item) => ({
         ...item,
         column

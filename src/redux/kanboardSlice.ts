@@ -1,7 +1,7 @@
-import {Task} from "../types/Task";
+import {TaskGit} from "../types/TaskGit";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-type ApiData = Task[];
+type ApiData = TaskGit[];
 
 interface RepoState {
     url: string;

@@ -13,14 +13,14 @@ const githubApi = createApi({
     endpoints: (builder) => {
         return {
             getRepoInfo: builder.query<Repo, string>({
-                query: (url) => {
+                query: (url: Query['url']) => {
                     const pathname = new URL(url).pathname;
                     sessionStorage.setItem("URL", url);
                     return pathname;
                 },
             } as any),
             getAllNewIssues: builder.query<Issue[], Query>({
-                query: (url) => {
+                query: (url: Query['url']) => {
                     const pathname = new URL(url).pathname;
                     console.log(`pathname open: ${pathname}`)
                     return `${pathname}/issues?state=open`;
@@ -30,7 +30,7 @@ const githubApi = createApi({
                 },
             } as any),
             getAssignedIssues: builder.query<Issue[], Query>({
-                query: (url) => {
+                query: (url: Query['url']) => {
                     const pathname = new URL(url).pathname;
                     return `${pathname}/issues?state=open&assignee=*`;
                 },
@@ -39,7 +39,7 @@ const githubApi = createApi({
                 },
             } as any),
             getClosedIssues: builder.query<Issue[], Query>({
-                query: (url) => {
+                query: (url: Query['url']) => {
                     const pathname = new URL(url).pathname;
                     return `${pathname}/issues?state=closed`;
                 },

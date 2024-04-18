@@ -2,20 +2,29 @@ import {useDispatch, useSelector} from "react-redux";
 import Task from "./Task";
 import boardsSlice from "../../redux/boardsSlice";
 import * as React from "react";
+import {  ColumnType} from "../../utils/constants";
+import {TaskGit} from "../../types/TaskGit";
+import {useTDispatch} from "../../hooks/reduxHooks";
+import {kanboardActions} from "../../redux/kanboardSlice";
 
 interface ColumnProps {
     colIndex: number;
-    prevColIndex: number;
-    taskIndex: number;
+    title: ColumnType;
+    column: TaskGit[];
 }
 
-const Column: React.FC<ColumnProps> = ({colKey, title, taskIndex}) => {
-    const dispatch = useDispatch();
+const Column: React.FC<ColumnProps> = ({  colIndex,
+                                           title,
+                                           column}) => {
+    const dispatch = useTDispatch();
+/*
     const boards = useSelector(state => state.boards);
     const board = boards.find(board => board.isActive);
-   /* const col = board.columns.find((col, i) => i === colIndex);
+    const col = board.columns.find((col, i) => i === colIndex);
 
+*/
 
+    console.log(title);
     //FOR DRAGGING AND BETWEEN DIFFERENT COLUMNS
     const handleOnDrop = (e) => {
         e.preventDefault();
@@ -24,7 +33,7 @@ const Column: React.FC<ColumnProps> = ({colKey, title, taskIndex}) => {
         if (colIndex !== data.prevColIndex) {
             // BETWEEN DIFFERENT COLUMNS
             dispatch(
-                boardsSlice.actions.dragTask({
+                kanboardActions.dragTask({
                     colIndex,
                     prevColIndex: data.prevColIndex,
                     taskIndex: data.taskIndex,
@@ -33,7 +42,7 @@ const Column: React.FC<ColumnProps> = ({colKey, title, taskIndex}) => {
         }
 
 
-    };*/
+    };
 
     const handleOnDragOver = (e) => {
         e.preventDefault();
@@ -42,7 +51,7 @@ const Column: React.FC<ColumnProps> = ({colKey, title, taskIndex}) => {
 
     return (
         <div
-            // onDrop={handleOnDrop}
+            onDrop={handleOnDrop}
             onDragOver={handleOnDragOver}
             className=" mx-5 pt-[90px]  "
         >
@@ -53,9 +62,9 @@ const Column: React.FC<ColumnProps> = ({colKey, title, taskIndex}) => {
                     {title}
                 </p>
 
-             {/*   {col.tasks.map((task, index) => (
+                {column.map((task, index) => (
                     <Task key={index} taskIndex={index} colIndex={colIndex}/>
-                ))}*/}
+                ))}
             </div>
 
         </div>

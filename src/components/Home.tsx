@@ -10,7 +10,7 @@ import Board from "./Board/Board";
 import {Repo} from "../types/Repo";
 
 interface HomeProps {
-    repoInfo: Repo;
+    repoInfo?: Repo;
     isLoading: boolean;
     isFetching: boolean;
     isError: boolean;

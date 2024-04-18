@@ -6,7 +6,7 @@ import {Repo} from "../types/Repo";
 
 interface HeaderProps {
     isError: boolean;
-    repoInfo: Repo;
+    repoInfo?: Repo;
 }
 
 

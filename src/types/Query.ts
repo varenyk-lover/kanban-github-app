@@ -1,10 +1,9 @@
-import {Repo} from "./Repo";
-import {Task} from "./Task";
+import {TaskGit} from "./TaskGit";
 
 
 
 export interface QueryResponse {
-    data: Task[];
+    data: TaskGit[];
     isFetching?: boolean;
     isLoading?: boolean;
     isError?: boolean;

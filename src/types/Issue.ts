@@ -1,5 +1,6 @@
 import {Owner} from "./Repo";
 
+
 export interface Issue {
     url: string;
     repository_url: string;
