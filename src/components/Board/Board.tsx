@@ -9,9 +9,11 @@ import {kanboardActions} from "../../redux/kanboardSlice";
 import {useEffect} from "react";
 
 interface BoardProps extends Query {
+    isLoading: boolean;
+    isFetching: boolean;
 }
 
-const Board: React.FC<BoardProps> = ({url}) => {
+const Board: React.FC<BoardProps> = ({url, isFetching, isLoading}) => {
  /*   const boards = useSelector((state) => state.boards);
     const board = boards.find((board) => board.isActive === true);
     const columns = board.columns;*/
@@ -29,7 +31,7 @@ const Board: React.FC<BoardProps> = ({url}) => {
         //  виконати при монтуванні
          dispatch(kanboardActions.setTasks(tasks));
 console.log('Mount Board')
-
+        console.log(tasks);
 
         // Cleanup function коли буде анмаунт
         return () => {
@@ -52,7 +54,7 @@ console.log('Mount Board')
             ))}
         </div>*/
 
-        <div className="flex justify-center gap-6">
+ /*       <div className="flex justify-center gap-6">
             {tasks.map((column, index) => {
                 console.log(column);
                 return (  <Column
@@ -64,6 +66,11 @@ console.log('Mount Board')
 
             }
                 )}
+        </div>*/
+        <div className="flex justify-center gap-6">
+            {columnTitles.map((title, index) => (
+                <Column key={index} colIndex={index} title={title} column={tasks[index]} isFetching={isFetching} isLoading={isLoading} />
+            ))}
         </div>
     );
 };

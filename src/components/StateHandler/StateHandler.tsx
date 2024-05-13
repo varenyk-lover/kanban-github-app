@@ -3,7 +3,7 @@ import * as React from "react";
 
 interface StateHandlerProps {
     imgStyles?: string;
-    imgSrc: string;
+    imgSrc?: string;
     message: string;
 }
 

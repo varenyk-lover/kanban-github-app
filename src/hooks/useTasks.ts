@@ -10,8 +10,9 @@ export const useTasks = (url: Query['url']) => {
     const columns = [allNewIssuesQuery, assignedIssuesQuery, closedIssuesQuery];
 
     return {
-        tasks: columns.map((column) => column.data),
+        tasks: columns.map((column) => column.data)
     };
+
 };
 
 /*

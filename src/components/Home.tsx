@@ -38,8 +38,8 @@ const Home: React.FC<HomeProps> = ({
                     <StateHandler imgSrc={notfound}
                                   message={`Github account or repository not found. Please refresh the page or try another URL.`}/>
                 ) :
-                (!isError && repoInfo && columns.length > 0) ? (
-                    <Board url={url}/>
+                (!isError && repoInfo ) ? (
+                    <Board url={url} isFetching={isFetching} isLoading={isLoading}/>
                 ) : (<StateHandler imgSrc={nodata} message={"No data"}/>)
             }
         </main>

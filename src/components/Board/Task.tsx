@@ -2,13 +2,33 @@ import {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import boardsSlice from "../../redux/boardsSlice";
 import * as React from "react";
+import {Issue} from "../../types/Issue";
+import {getTaskDate} from "../../utils/getTaskDate";
+
 
 interface TaskProps {
     colIndex: number;
     taskIndex: number;
+    title: Issue['title'];
+    url: Issue['html_url'];
+    number: Issue['number'];
+    createdAt: Issue['created_at'];
+    assignee: Issue['assignee'];
+    comments: Issue['comments'];
 }
 
-const Task: React.FC<TaskProps> = ({colIndex, taskIndex}) => {
+const Task: React.FC<TaskProps> = ({
+                                       taskIndex,
+                                       colIndex,
+                                       title,
+                                       url,
+                                       number,
+                                       createdAt,
+                                       assignee,
+                                       comments,
+                                   }) => {
+
+    const openingTime = getTaskDate(new Date(), createdAt);
 
     const dispatch = useDispatch();
     const boards = useSelector((state) => state.boards);
@@ -58,7 +78,7 @@ const Task: React.FC<TaskProps> = ({colIndex, taskIndex}) => {
 
 
     return (
-        <div>
+        <a href={url} target="_blank">
             <div
                 draggable
                 onDragStart={handleOnDragStart}
@@ -66,14 +86,17 @@ const Task: React.FC<TaskProps> = ({colIndex, taskIndex}) => {
                 onDrop={handleOnDrop}
                 className=" w-[280px] first:my-5 rounded-lg  bg-white  dark:bg-[#2b2c37] shadow-[#364e7e1a] py-6 px-3 shadow-lg hover:text-[#635fc7] dark:text-white dark:hover:text-[#635fc7] cursor-pointer "
             >
-                {/*<p className=" font-bold tracking-wide text">{task.title}</p>*/}
-                <p className=" font-bold tracking-wide text">{taskIndex}</p>
+                <p className=" font-bold tracking-wide text">{title}</p>
                 <p className=" font-bold text-xs tracking-tighter mt-2 text-gray-500">
-                    some editional info???
+                    #{number} opened {openingTime}
+                </p>
+
+                <p className=" font-bold text-xs tracking-tighter mt-2 text-gray-400">
+                    {assignee ? `${assignee} | ` : ""} Comments: {comments}
                 </p>
             </div>
 
-        </div>
+        </a>
     );
 }
 
