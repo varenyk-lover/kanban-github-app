@@ -17,9 +17,9 @@ const Header: React.FC<HeaderProps> = ({isError, repoInfo}) => {
     }
 
     return (
-        <header className=" px-20 py-5 fixed left-0 bg-white dark:bg-[#2b2c37] z-50 right-0 ">
-            <div className="h-[100px]">
-                <div className=" flex justify-between   ">
+        <header className=" px-8 xl:px-20 lg:px-16 py-5 fixed left-0 bg-white dark:bg-[#2b2c37] z-50 right-0 ">
+            <div className="h-[250px] mx-auto w-[fit-content] sm:h-[170px] md:h-[100px] flex-col flex items-center md:items-start">
+                <div className=" flex  flex-col md:flex-row  items-center md:items-start justify-between gap-[26px] sm:gap-0  ">
 
                     {/* Left Side  */}
                     <Form/>

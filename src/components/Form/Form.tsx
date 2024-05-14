@@ -40,8 +40,8 @@ const Form = () => {
 
 
     return (
-        <form onSubmit={handleSubmit} className=" flex gap-6">
-            <div className=" flex items-start flex-col min-h-[80px] w-[1000px] space-x-2  md:space-x-4">
+        <form onSubmit={handleSubmit} className=" flex items-center sm:items-start justify-between flex-col sm:flex-row gap-0 sm:gap-6">
+            <div className=" flex  flex-col min-h-[80px] 2xl:w-[1000px] xl:w-[800px] lg:w-[600px] md:w-[400px] sm:w-[400px] w-[260px] space-x-2  md:space-x-4">
                 <input
                     className={`p-3 h-[56px] bg-gray-200 w-full rounded-full border-[0.5px] outline-1 ring-0 focus:outline-[#635fc7] ${errorMessage ? 'border-[#ff4d4f]' : ''}`}
                     autoComplete="off"
@@ -51,7 +51,7 @@ const Form = () => {
             </div>
 
             <div className=" flex space-x-4 items-start   ">
-                <button type="submit" className=" button h-[56px] min-w-[131px] md:block">
+                <button type="submit" className=" button h-[56px] w-[200px] sm:w-[131px] md:block">
                     Load issues
                 </button>
             </div>

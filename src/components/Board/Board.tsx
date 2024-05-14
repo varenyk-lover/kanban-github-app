@@ -42,32 +42,7 @@ console.log('Mount Board')
     }, [dispatch, tasks]);
 
     return (
-        /*    <div className="flex  justify-center gap-6 ">
-                {columns.map((col, index) => (
-                    <Column key={index} colIndex={index}/>
-                ))}
-            </div>*/
-
-      /*  <div className="flex  justify-center gap-6 ">
-            {Object.keys(COLUMNS).map((colKey, index) => (
-                <Column key={colKey} title={COLUMNS[colKey as ColumnType]} taskIndex={tasks[index]}/>
-            ))}
-        </div>*/
-
- /*       <div className="flex justify-center gap-6">
-            {tasks.map((column, index) => {
-                console.log(column);
-                return (  <Column
-                key={index}
-                colIndex={index}
-                title={columnTitles[index]}
-                column={column}
-                />)
-
-            }
-                )}
-        </div>*/
-        <div className="flex justify-center gap-6">
+        <div className="flex mx-auto justify-center gap-6">
             {columnTitles.map((title, index) => (
                 <Column key={index} colIndex={index} title={title} column={tasks[index]} isFetching={isFetching} isLoading={isLoading} />
             ))}
