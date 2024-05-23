@@ -64,9 +64,9 @@ const Column: React.FC<ColumnProps> = ({
             onDragOver={handleOnDragOver}
             className="mx-5 "
         >
-            <div className="   border-[1px]  border-indigo-500 rounded-xl ">
+            <div className=" w-[270px] sm:w-auto  border-[1px]  border-indigo-500 rounded-xl ">
                 <div
-                    className=" m-3 px-5  overflow-x-hidden overflow-y-auto scrollbar-hide w-[320px] h-[670px] ">
+                    className=" m-0 sm:m-3 px-2 sm:px-5  overflow-x-hidden overflow-y-auto scrollbar-hide w-auto sm:w-[320px] h-[670px] ">
                     <p className=" pt-4 font-semibold flex justify-center  items-center  gap-2 tracking-widest md:tracking-[.2em] text-gray-500  ">
 
                         {title}

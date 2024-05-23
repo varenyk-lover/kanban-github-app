@@ -22,7 +22,7 @@ const RepoInfo: React.FC<FormInputProps> = ({
 
 
     return (
-        <div className="pt-1 flex gap-2   dark:text-white ">
+        <div className="pt-1 flex gap-2  text-sm sm:text-base dark:text-white ">
                     <span className=" text-[#635fc7]  cursor-pointer  hover:underline">
                         <a
                             href={repoOwnerUrl}>{repoOwner.charAt(0).toLocaleUpperCase()+repoOwner.slice(1)}</a>

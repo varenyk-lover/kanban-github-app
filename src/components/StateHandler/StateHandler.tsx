@@ -9,7 +9,7 @@ interface StateHandlerProps {
 
 const StateHandler: React.FC<StateHandlerProps> = ({imgStyles, imgSrc, message}) => {
     return (
-        <div className="pt-[190px]  flex align-center  justify-start  flex-col">
+        <div className="pt-[190px]  mx-auto flex align-center  justify-start  flex-col">
             <div
                 className="h-[190px]  w-[190px]   mx-auto">
                 <img className={imgStyles} src={imgSrc}/>

@@ -7,7 +7,7 @@ interface RepoState {
     url: string;
     tasks: ApiData;
 }
-
+//FIX PAYLOAD
 interface DragTaskInColumnPayload {
     colIndex: number;
     prevColIndex: number;

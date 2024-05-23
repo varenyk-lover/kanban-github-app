@@ -31,7 +31,7 @@ const Home: React.FC<HomeProps> = ({
 
     return (
         <main
-            className="bg-[#f4f7fd] pt-[350px] sm:pt-[290px] md:pt-[190px] h-screen scrollbar-hide dark:bg-[#20212c]   overflow-y-hidden overflow-x-auto flex align-center  ">
+            className="bg-[#f4f7fd] pt-[280px] sm:pt-[350px] sm:pt-[290px] md:pt-[190px] h-screen scrollbar-hide dark:bg-[#20212c]   overflow-y-hidden overflow-x-auto flex align-center  ">
             {(isFetching || isLoading) ? (
                 <StateHandler imgSrc={loader} message={"Loading..."} imgStyles={" animate-spin"}/>
             ) : isError ? (

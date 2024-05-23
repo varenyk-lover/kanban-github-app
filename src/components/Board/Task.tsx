@@ -84,9 +84,9 @@ const Task: React.FC<TaskProps> = ({
                 onDragStart={handleOnDragStart}
                 onDragOver={handleOnDragOver}
                 onDrop={handleOnDrop}
-                className=" w-[280px] first:my-5 rounded-lg  bg-white  dark:bg-[#2b2c37] shadow-[#364e7e1a] py-6 px-3 shadow-lg hover:text-[#635fc7] dark:text-white dark:hover:text-[#635fc7] cursor-pointer "
+                className=" w-[250px] sm:w-[280px] first:my-5 rounded-lg  bg-white  dark:bg-[#2b2c37] shadow-[#364e7e1a] py-6 px-3 shadow-lg hover:text-[#635fc7] dark:text-white dark:hover:text-[#635fc7] cursor-pointer "
             >
-                <p className=" font-bold tracking-wide text">{title}</p>
+                <p className=" font-bold tracking-wide text-sm sm:text-base text">{title}</p>
                 <p className=" font-bold text-xs tracking-tighter mt-2 text-gray-500">
                     #{number} opened {openingTime}
                 </p>
