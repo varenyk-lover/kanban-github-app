@@ -2,6 +2,7 @@ import * as React from "react";
 import {useState} from "react";
 import {kanboardActions} from "../../redux/kanboardSlice";
 import {useTDispatch} from "../../hooks/reduxHooks";
+import {useTasks} from "../../hooks/useTasks";
 
 
 
@@ -12,6 +13,7 @@ const Form = () => {
     const urlRegex = /^https:\/\/github\.com\/[^\/]+\/[^\/]+$/;
 
     const dispatch = useTDispatch();
+    // const {tasks} = useTasks(inputValue);
 
     const validateUrl = () => {
         if (inputValue && !urlRegex.test(inputValue)) {
@@ -32,10 +34,11 @@ const Form = () => {
         e.preventDefault();
         setErrorMessage('');
         validateUrl();
-
         dispatch(kanboardActions.setRepoUrl(inputValue));
+
+        // dispatch(kanboardActions.setTasks(tasks));
+        console.log(inputValue)
         setInputValue("");
-        console.log(inputValue);
     };
 
 

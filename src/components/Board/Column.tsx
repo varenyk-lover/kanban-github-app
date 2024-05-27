@@ -16,16 +16,17 @@ interface ColumnProps {
     colIndex: number;
     title: ColumnType;
     column: TaskGit[];
-    isLoading: boolean;
-    isFetching: boolean;
+
 }
 
 const Column: React.FC<ColumnProps> = ({
                                            colIndex,
                                            title,
-                                           column, isFetching, isLoading
+                                           column,
                                        }) => {
     const dispatch = useTDispatch();
+
+
     /*
         const boards = useSelector(state => state.boards);
         const board = boards.find(board => board.isActive);
@@ -71,15 +72,19 @@ const Column: React.FC<ColumnProps> = ({
 
                         {title}
                     </p>
-                    {column?.length > 0 && column?.map((task, index) => (
-                        <Task key={index} taskIndex={index} colIndex={colIndex}
-                              title={task.title}
-                              url={task.html_url}
-                              number={task.number}
-                              createdAt={task.created_at}
-                              assignee={task.assignee?.login}
-                              comments={task.comments}/>
-                    ))
+                    {(!column) ? (
+                        <StateHandler imgSrc={loader} message={"Loading tasks..."} imgStyles={" animate-spin"}/>
+                    )   :
+                        ( column?.length > 0 ) ?   column?.map((task, index) => (
+                            <Task key={index} taskIndex={index} colIndex={colIndex}
+                                  title={task.title}
+                                  url={task.html_url}
+                                  number={task.number}
+                                  createdAt={task.created_at}
+                                  assignee={task.assignee?.login}
+                                  comments={task.comments}/>
+                        ))  : (<StateHandler imgSrc={nodata} message={"No tasks yet"}/>)
+
                     }
                 </div>
             </div>

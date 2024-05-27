@@ -1,5 +1,3 @@
-import {useSelector} from "react-redux";
-import Column from "./Board/Column";
 import loader from "../assets/loading-spinner.svg";
 import nodata from "../assets/box.svg";
 import notfound from "../assets/github-opened.svg";
@@ -23,9 +21,9 @@ const Home: React.FC<HomeProps> = ({
                                        isFetching,
                                        isError, url
                                    }) => {
-    const boards = useSelector((state) => state.boards);
+  /*  const boards = useSelector((state) => state.boards);
     const board = boards.find((board) => board.isActive === true);
-    const columns = board.columns;
+    const columns = board.columns;*/
 
     console.log(repoInfo);
 
@@ -33,13 +31,13 @@ const Home: React.FC<HomeProps> = ({
         <main
             className="bg-[#f4f7fd] pt-[280px] sm:pt-[350px] sm:pt-[290px] md:pt-[190px] h-screen scrollbar-hide dark:bg-[#20212c]   overflow-y-hidden overflow-x-auto flex align-center  ">
             {(isFetching || isLoading) ? (
-                <StateHandler imgSrc={loader} message={"Loading..."} imgStyles={" animate-spin"}/>
+                <StateHandler imgSrc={loader} message={"Loading board..."} imgStyles={" animate-spin"}/>
             ) : isError ? (
                     <StateHandler imgSrc={notfound}
                                   message={`Github account or repository not found. Please refresh the page or try another URL.`}/>
                 ) :
                 (!isError && repoInfo ) ? (
-                    <Board url={url} isFetching={isFetching} isLoading={isLoading}/>
+                    <Board url={url}  />
                 ) : (<StateHandler imgSrc={nodata} message={"No data"}/>)
             }
         </main>

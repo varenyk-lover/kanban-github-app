@@ -31,7 +31,7 @@ const Task: React.FC<TaskProps> = ({
     const openingTime = getTaskDate(new Date(), createdAt);
 
     const dispatch = useDispatch();
-    const boards = useSelector((state) => state.boards);
+   /* const boards = useSelector((state) => state.boards);
     const board = boards.find((board) => board.isActive === true);
     const columns = board.columns;
     const col = columns.find((col, i) => i === colIndex);
@@ -75,15 +75,15 @@ const Task: React.FC<TaskProps> = ({
         }
 
     };
-
+*/
 
     return (
         <a href={url} target="_blank">
             <div
                 draggable
-                onDragStart={handleOnDragStart}
+         /*       onDragStart={handleOnDragStart}
                 onDragOver={handleOnDragOver}
-                onDrop={handleOnDrop}
+                onDrop={handleOnDrop}*/
                 className=" w-[250px] sm:w-[280px] first:my-5 rounded-lg  bg-white  dark:bg-[#2b2c37] shadow-[#364e7e1a] py-6 px-3 shadow-lg hover:text-[#635fc7] dark:text-white dark:hover:text-[#635fc7] cursor-pointer "
             >
                 <p className=" font-bold tracking-wide text-sm sm:text-base text">{title}</p>

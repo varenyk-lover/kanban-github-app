@@ -22,7 +22,7 @@ const githubApi = createApi({
             getAllNewIssues: builder.query<Issue[], Query>({
                 query: (url: Query['url']) => {
                     const pathname = new URL(url).pathname;
-                    console.log(`pathname open: ${pathname}`)
+                    console.log(`pathname open all: ${pathname}`)
                     return `${pathname}/issues?state=open`;
                 },
                 transformResponse: (response: Issue[]) => {
@@ -32,6 +32,7 @@ const githubApi = createApi({
             getAssignedIssues: builder.query<Issue[], Query>({
                 query: (url: Query['url']) => {
                     const pathname = new URL(url).pathname;
+                    console.log(`pathname Assigned in progress: ${pathname}`);
                     return `${pathname}/issues?state=open&assignee=*`;
                 },
                 transformResponse: (response: Issue[]) => {
@@ -41,6 +42,7 @@ const githubApi = createApi({
             getClosedIssues: builder.query<Issue[], Query>({
                 query: (url: Query['url']) => {
                     const pathname = new URL(url).pathname;
+                    console.log(`pathname closed done: ${pathname}`);
                     return `${pathname}/issues?state=closed`;
                 },
                 transformResponse: (response: Issue[]) => {
